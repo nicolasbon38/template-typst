@@ -49,14 +49,3 @@
 = Introduction
 
 == First Idea
-
-#slide(include "slides/01_intro_demo/01_01_coucou.typ")
-
-= Demo of boxes
-
-#slide(include "slides/02_test_boxes/02_01_question.typ")
-#slide(include "slides/02_test_boxes/02_02_remark.typ")
-
-= Demo of cetz
-
-#slide(include "slides/03_test_cetz/03_01_torus.typ")
