@@ -9,7 +9,7 @@
       subtitle: [],
       author: [Sonia Belaïd, *Nicolas Bon*, Matthieu Rivain],
       date: [October 14, 2026],
-      institution: [CryptoExperts],
+      institution: [*CryptoExperts*],
       extra: (venue: [CHES 2026, Antalya, Turkey],)
   )
 )
