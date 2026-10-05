@@ -60,15 +60,15 @@
 
 
 
-  let sum = figure(
+  let sum = block(
     sum-demo-circuit
   )
 
-  let clear-mult = figure(
+  let clear-mult = block(
     clear-mult-demo-circuit
   )
 
-  let pbs = figure(
+  let pbs = block(
     pbs-demo-circuit
   )
 

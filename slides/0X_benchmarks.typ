@@ -146,7 +146,7 @@
 
 #slide(repeat: 4, self=>{
 
-  figure(
+  block(
     plot-benchs(
       subslide: self.subslide,
       legend-fill: self.colors.primary-light,

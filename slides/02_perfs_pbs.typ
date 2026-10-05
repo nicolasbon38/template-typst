@@ -43,7 +43,7 @@
 
   set align(center+horizon)
 
-  figure(
+  block(
     plot-perfs-pbs(self.colors.primary-dark)
   )
 

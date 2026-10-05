@@ -29,7 +29,7 @@
 
   set text(size: 1.3em)
 
-  figure(
+  block(
     cetz.canvas({
       import cetz.draw: *
 
@@ -69,7 +69,7 @@
 
 #slide(title: "A better version using chunks", repeat:2, config: (detect-overflow: false), self => {
 
-  figure(
+  block(
     cetz.canvas({
       let typst-line = line
       import cetz.draw: *
@@ -174,7 +174,7 @@
 #slide(title: "Reduction of the problem to one single output chunk:", config: (detect-overflow: false), self=>{
   {
 
-    figure(
+    block(
       cetz.canvas({
         let typst-line = line
         import cetz.draw: *
