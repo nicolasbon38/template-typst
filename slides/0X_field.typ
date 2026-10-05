@@ -1,6 +1,6 @@
-#import "../../theme/touying/theme-crx.typ": slide
+#import "../theme/touying/theme-crx.typ": slide
 #import "@preview/touying:0.7.4": utils
-#import "../../theme/boxes.typ": alertbox, propertybox
+#import "../theme/boxes.typ": alertbox, propertybox
 
 
 

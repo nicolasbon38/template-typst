@@ -1,4 +1,4 @@
-#import "../../theme/touying/theme-crx.typ": slide
+#import "../theme/touying/theme-crx.typ": slide
 #import "@preview/lilaq:0.6.0" as lq
 
 
@@ -54,12 +54,12 @@
   }
 
   let data-cjp = load-data-csv(
-    "../../assets/csv/perfs-pbs.csv",
+    "../assets/csv/perfs-pbs.csv",
   )
 
-  let data-hlut-40 = load-data-json("../../assets/json/timings_hlut-40.json")
-  let data-wop-pbs = load-data-json("../../assets/json/timings_wop-pbs.json")
-  let data-tbm = load-data-json("../../assets/json/timings_tbm.json")
+  let data-hlut-40 = load-data-json("../assets/json/timings_hlut-40.json")
+  let data-wop-pbs = load-data-json("../assets/json/timings_wop-pbs.json")
+  let data-tbm = load-data-json("../assets/json/timings_tbm.json")
 
   lq.diagram(
     width: 80%,

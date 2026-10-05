@@ -1,8 +1,8 @@
-#import "../../theme/touying/theme-crx.typ": slide
+#import "../theme/touying/theme-crx.typ": slide
 #import "@preview/cetz:0.5.2"
 #import cetz.draw: line, set-style
-#import "../../theme/circuits/gates.typ": add-block, clearmult-block, pbs-block, connect
-#import "../../theme/circuits/ciphertexts.typ": ciphertext-block, plaintext-block
+#import "../theme/circuits/gates.typ": add-block, clearmult-block, pbs-block, connect
+#import "../theme/circuits/ciphertexts.typ": ciphertext-block, plaintext-block
 
 #slide(title: [TFHE: the building blocks], self => {
   set align(center + horizon)

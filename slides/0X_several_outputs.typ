@@ -1,6 +1,6 @@
-#import "../../theme/touying/theme-crx.typ": slide
+#import "../theme/touying/theme-crx.typ": slide
 #import "@preview/touying:0.7.4": utils
-#import "../../theme/boxes.typ": propertybox
+#import "../theme/boxes.typ": propertybox
 
 
 #slide(title:"Generalization to several outputs", repeat:2,  self =>{

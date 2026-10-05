@@ -1,4 +1,4 @@
-#import "../../theme/touying/theme-crx.typ": slide
+#import "../theme/touying/theme-crx.typ": slide
 #import "@preview/touying:0.7.4": utils
 
 

@@ -1,8 +1,8 @@
-#import "../../theme/mannot/ciphertext.typ": ciphertextmath
-#import "../../theme/touying/theme-crx.typ": slide, slide-margin
-#import "../../theme/boxes.typ": questionbox, propertybox, alertbox
-#import "../../theme/circuits/ciphertexts.typ": ciphertext-block, plaintext-block
-#import "../../theme/circuits/gates.typ": pbs-block, connect, add-block, clearmult-block
+#import "../theme/mannot/ciphertext.typ": ciphertextmath
+#import "../theme/touying/theme-crx.typ": slide, slide-margin
+#import "../theme/boxes.typ": questionbox, propertybox, alertbox
+#import "../theme/circuits/ciphertexts.typ": ciphertext-block, plaintext-block
+#import "../theme/circuits/gates.typ": pbs-block, connect, add-block, clearmult-block
 #import "@preview/touying:0.7.4": utils, alternatives, only
 #import "@preview/cetz:0.5.2"
 

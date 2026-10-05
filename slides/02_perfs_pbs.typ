@@ -1,10 +1,10 @@
-#import "../../theme/touying/theme-crx.typ": slide
+#import "../theme/touying/theme-crx.typ": slide
 #import "@preview/lilaq:0.6.0" as lq
 
 
 #let plot-perfs-pbs(line-color) = {
   let data = csv(
-    "../../assets/csv/perfs-pbs.csv",
+    "../assets/csv/perfs-pbs.csv",
     delimiter:",",
     row-type: array
   )

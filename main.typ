@@ -20,22 +20,22 @@
 
 = Intro TFHE
 
-#include "slides/04_ideas/01_tfhe_basics.typ"
-#include "slides/04_ideas/02_perfs_pbs.typ"
+#include "slides/01_tfhe_basics.typ"
+#include "slides/02_perfs_pbs.typ"
 
 = Circuit != Blocks
 
-#include "slides/04_ideas/03_blocks_vs_bits.typ"
-#include "slides/04_ideas/04_side_channels.typ"
+#include "slides/03_blocks_vs_bits.typ"
+#include "slides/04_side_channels.typ"
 
 = Our technique
-#include "slides/04_ideas/05_incremental_rationale.typ"
-#include "slides/04_ideas/0X_field.typ"
-#include "slides/04_ideas/0X_several_outputs.typ"
+#include "slides/05_incremental_rationale.typ"
+#include "slides/0X_field.typ"
+#include "slides/0X_several_outputs.typ"
 
 
 = Experimental Results
-#include "slides/04_ideas/0X_benchmarks.typ"
+#include "slides/0X_benchmarks.typ"
 
 = Conclusion
-#include "slides/04_ideas/0X_conclusion.typ"
+#include "slides/0X_conclusion.typ"
