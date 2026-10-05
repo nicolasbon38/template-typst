@@ -1,3 +1,0 @@
-
-- First idea
-- Second Idea

@@ -17,21 +17,7 @@
 
 #title-slide()
 
-// = Introduction
-//
-// == First Idea
-//
-// #slide(title:"coucou", include "slides/01_intro_demo/01_01_coucou.typ")
-//
-// = Demo of boxes
-//
-// #slide(title:"Here' a question:", include "slides/02_test_boxes/02_01_question.typ")
-// #slide(include "slides/02_test_boxes/02_02_remark.typ")
-//
-// = Demo of cetz
-//
-// #slide(include "slides/03_test_cetz/03_01_torus.typ")
-//
+
 = Intro TFHE
 
 #include "slides/04_ideas/01_tfhe_basics.typ"
