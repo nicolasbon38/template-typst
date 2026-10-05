@@ -1,3 +1,5 @@
+#import "colors.typ": *
+
 #let genericbox(title, body, color) = block(
   width: 80%,
   breakable: false,
@@ -31,5 +33,9 @@
   ]
 ]
 
-#let questionbox(body) = genericbox("Question", body, red)
-#let propertybox(title, body) = genericbox(title, body, green)
+#let questionbox(body) = genericbox("Question", body, secondary)
+#let propertybox(title, body) = genericbox(title, body, tertiary)
+#let alertbox(body) = genericbox(
+  [#emoji.warning],
+  body,
+  red)

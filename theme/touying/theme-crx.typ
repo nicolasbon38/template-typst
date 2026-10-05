@@ -1,9 +1,7 @@
 #import "@preview/touying:0.7.4": *
 #import "../colors.typ": *
 
-#let slide-margin = 15mm
-
-
+#let slide-margin = 7mm
 
 
 // Define a function slide() to call at each slide
@@ -53,14 +51,15 @@
     let title-text = text(
       size: 34pt,
       weight: "bold",
-      fill: self.colors.secondary,
+      fill: self.colors.primary,
       info.title,
     )
-    let subtitle-text = text(size: 19pt, fill: self.colors.secondary, info.subtitle)
-    let author-text = text(size: 17pt, fill: white, info.author)
+    let subtitle-text = text(size: 19pt, fill: self.colors.primary, info.subtitle)
+    let author-text = text(size: 17pt, fill: primary-light, info.author)
+    let institution-text = text(size: 17pt, fill: primary-light, info.institution)
 
     // A format for extra info
-    let detail-text(body) = text(size: 15pt, fill: white, body)
+    let detail-text(body) = text(size: 15pt, fill: primary-light, body)
 
     align(left + horizon)[
       #title-text
@@ -70,6 +69,8 @@
       ]
       #v(8mm)
       #author-text
+      #v(8mm)
+      #institution-text
     ]
     place(bottom + left)[#detail-text(info.extra.venue)]
     place(bottom + right)[#detail-text(info.date)]
@@ -86,7 +87,7 @@
     self,
     config-page(
       numbering: none,
-      fill: self.colors.primary-darkest,
+      fill: self.colors.primary-dark,
     ),
   )
 
@@ -103,20 +104,20 @@
       #text(
         size: 34pt,
         weight: "bold",
-        fill: self.colors.secondary,
+        fill: self.colors.primary,
         [Part #number:],
       )
 
       #v(8mm)
 
-      #text(size: 19pt, fill: white, title)
+      #text(size: 19pt, fill: primary-light, title)
 
       #v(5mm)
 
       #align(center)[
         #line(
           length: 70%,
-          stroke: self.colors.secondary + 5pt,
+          stroke: self.colors.primary + 5pt,
         )
       ]
     ]
@@ -138,20 +139,18 @@
   )
 
   touying-slide(self: self, {
-    set text(font: "JetBrains Mono", size:19pt)
-
-    let section-title = text(fill: self.colors.secondary, utils.display-current-heading(
+    let section-title = text(fill: self.colors.primary, utils.display-current-heading(
       level:1,
       numbered: false,
     ))
-    let subsection-title = text(fill:white, utils.display-current-heading(
+    let subsection-title = text(fill:primary-light, utils.display-current-heading(
       level:2,
       numbered: false,
     ))
 
 
     let horizon-bar = align(center)[
-      #line(length: 50%, stroke:self.colors.secondary + 5pt)
+      #line(length: 50%, stroke:self.colors.primary + 5pt)
     ]
 
     align(left + horizon)[
@@ -173,23 +172,24 @@
     body
 ) = {
 
-  set text(font: "STIXTwo Text", size: 18pt, fill: crxdark)
-  set align(left + horizon)
+  set text(font: "STIX Two Text", size: 23pt, fill: primary-dark)
+  set align(center + horizon)
   // Touying hides the source headings, but Typst still needs a numbering
   // pattern for the heading counter to advance.
   set heading(numbering: "1.1")
+
 
   show: touying-slides.with(
     config-page(
       paper: "presentation-16-9",
       margin: slide-margin,
-      fill: crxlight,
+      fill: primary-light,
       foreground: {
         rect(
           width: 100%,
           height: 100%,
           fill: none,
-          stroke: 10pt + crxaccent,
+          stroke: 10pt + primary,
         )
       }
     ),
@@ -201,10 +201,12 @@
       new-subsection-slide-fn: new-subsection-slide
     ),
     config-colors(
-      primary-light: crxlight,
-      primary-dark: crxdark,
-      primary-darkest: crxdarkbg,
-      secondary: crxaccent
+      primary: primary,
+      primary-light: primary-light,
+      primary-dark: primary-dark,
+      primary-darkest: primary-darkest,
+      secondary: secondary,
+      tertiary: tertiary
     ),
     // To manage title
     config-store(
