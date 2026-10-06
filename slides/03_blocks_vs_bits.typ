@@ -1,9 +1,7 @@
-#import "../theme/mannot/ciphertext.typ": ciphertextmath
-#import "../theme/touying/theme-crx.typ": slide, slide-margin
-#import "../theme/boxes.typ": questionbox, propertybox, alertbox
+#import "../theme/touying/theme-crx.typ": slide
+#import "../theme/boxes.typ": questionbox, alertbox
 #import "../theme/circuits/ciphertexts.typ": ciphertext-block, plaintext-block
 #import "../theme/circuits/gates.typ": pbs-block, connect, add-block, clearmult-block
-#import "@preview/touying:0.7.4": utils, alternatives, only
 #import "@preview/cetz:0.5.2"
 
 #slide( self =>{
@@ -31,7 +29,6 @@
 
   block(
     cetz.canvas({
-      import cetz.draw: *
 
       ciphertext-block(
         (0, 0), "x", [$x$]
@@ -72,7 +69,7 @@
   block(
     cetz.canvas({
       let typst-line = line
-      import cetz.draw: *
+      import cetz.draw: line, rect
 
       let spacing-block=0.7
 
@@ -177,7 +174,7 @@
     block(
       cetz.canvas({
         let typst-line = line
-        import cetz.draw: *
+        import cetz.draw: line, rect
 
         let spacing-block=0.7
 

@@ -12,7 +12,7 @@
     assert(n-sectors > 0, message: "n-sectors must be positive")
     assert(inner-radius < outer-radius, message: "inner-radius must be smaller than outer-radius")
 
-    import cetz.draw: *
+    import cetz.draw: group, line, arc, merge-path, content
     group({
       let step = 360deg / n-sectors
 
@@ -98,7 +98,6 @@
 
 
 #let embedded-torus = cetz.canvas({
-  import cetz.draw: *
 
 
   let sample-colors(n-colors) = {

@@ -1,5 +1,5 @@
-#import "@preview/touying:0.7.4": *
-#import "../colors.typ": *
+#import "@preview/touying:0.7.4": slide, touying-slide-wrapper, touying-slide, touying-slides, components, utils, config-page, config-common, config-colors, config-store
+#import "../colors.typ": primary, primary-light, primary-dark, primary-darkest, secondary, tertiary
 
 #let slide-margin = 7mm
 

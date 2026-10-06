@@ -1,5 +1,5 @@
-#import "@preview/touying:0.7.4": *
-#import "theme/touying/theme-crx.typ": crx-theme, slide, title-slide
+#import "@preview/touying:0.7.4": config-info
+#import "theme/touying/theme-crx.typ": crx-theme, title-slide
 
 
 
@@ -29,13 +29,15 @@
 #include "slides/04_side_channels.typ"
 
 = Our technique
-#include "slides/05_incremental_rationale.typ"
-#include "slides/0X_field.typ"
-#include "slides/0X_several_outputs.typ"
-
+#include "slides/05_dream_scenario.typ"
+#include "slides/06_incremental_rationale.typ"
+#include "slides/07_basis_extension_first_idea.typ"
+#include "slides/08_second_idea.typ"
+#include "slides/09_field.typ"
+#include "slides/10_several_outputs.typ"
 
 = Experimental Results
-#include "slides/0X_benchmarks.typ"
+#include "slides/11_benchmarks.typ"
 
 = Conclusion
-#include "slides/0X_conclusion.typ"
+#include "slides/12_conclusion.typ"

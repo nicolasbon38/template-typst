@@ -4,7 +4,7 @@
 
 //this function mimic the mannot one, but for cetz block
 #let ciphertext-block(position, label, body) = {
-  import cetz.draw: *
+  import cetz.draw: content
 
   content(
     position,
@@ -19,7 +19,7 @@
 
 
 #let plaintext-block(position, label, body) = {
-  import cetz.draw: *
+  import cetz.draw: content
 
   content(
     position,

@@ -1,6 +1,5 @@
 #import "../theme/touying/theme-crx.typ": slide
 #import "@preview/cetz:0.5.2"
-#import cetz.draw: line, set-style
 #import "../theme/circuits/gates.typ": add-block, clearmult-block, pbs-block, connect
 #import "../theme/circuits/ciphertexts.typ": ciphertext-block, plaintext-block
 
@@ -9,7 +8,6 @@
 
 
   let sum-demo-circuit = cetz.canvas({
-    import cetz.draw: *
 
     let block-step = 4
 
@@ -26,7 +24,6 @@
   })
 
   let clear-mult-demo-circuit = cetz.canvas({
-    import cetz.draw: *
 
     let block-step = 4
 
@@ -44,7 +41,6 @@
 
 
   let pbs-demo-circuit = cetz.canvas({
-    import cetz.draw: *
 
     let block-step = 4
 

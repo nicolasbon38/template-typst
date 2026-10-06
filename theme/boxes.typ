@@ -1,4 +1,4 @@
-#import "colors.typ": *
+#import "colors.typ": secondary, tertiary
 
 #let genericbox(title, body, color) = block(
   width: 80%,

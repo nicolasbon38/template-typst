@@ -80,7 +80,7 @@
       ..prepare-x-y-data(data-cjp),
       color: blue,
       mark: lq.marks.o,
-      label: [CJP],
+      label: [Classical PBS],
     ),
     reveal-plot(2,
       ..prepare-x-y-data(data-hlut-40.at("3")),
