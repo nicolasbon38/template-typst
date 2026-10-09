@@ -39,5 +39,6 @@
 = Experimental Results
 #include "slides/11_benchmarks.typ"
 
+#set heading(numbering: none)
 = Conclusion
 #include "slides/12_conclusion.typ"

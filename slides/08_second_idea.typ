@@ -2,25 +2,68 @@
 #import "../theme/inline-components.typ": pbs-inline, pbs-example
 #import "../theme/boxes.typ": propertybox
 #import "../theme/mannot/ciphertext.typ": ciphertextmath
+#import "../theme/circuits/ciphertexts.typ": ciphertext-block
+#import "../theme/circuits/gates.typ": pbs-block, add-block, connect
 #import "@preview/touying:0.7.4": utils
+#import "@preview/cetz:0.5.2"
 
 
-#slide(repeat: 4, self => {
+#slide(repeat: 5, self => {
   let (uncover, only, alternatives) = utils.methods(self)
+  let product-circuit = cetz.canvas({
+    ciphertext-block((0, 1.2), "x", [$x$])
+    ciphertext-block((0, -1.2), "y", [$y$])
+
+    pbs-block(
+      (3.5, 1.2),
+      "pbs-plus",
+      content: [PBS \
+        $frac((x+y)^2, 4)$],
+    )
+    pbs-block(
+      (3.5, -1.2),
+      "pbs-minus",
+      content: [PBS \
+        $-frac((x-y)^2, 4)$],
+    )
+
+    add-block((7, 0), "sum")
+    ciphertext-block((10, 0), "product", [$x dot.c y$])
+
+    connect((
+      ("x", "pbs-plus"),
+      ("y", "pbs-plus"),
+      ("x", "pbs-minus"),
+      ("y", "pbs-minus"),
+      ("pbs-plus", "sum"),
+      ("pbs-minus", "sum"),
+      ("sum", "product"),
+    ))
+  })
 
   [
     *Second idea:* we use multiplication to use fewer #pbs-inline("pbs-inline"):
   ]
 
-  uncover("2")[
+  uncover("2-")[
     #propertybox(
       "A ciphertext-ciphertext product takes two PBS:",
       [$ciphertextmath(dot.op)$ #text(font: "Noto Color Emoji")[#emoji.arrow.r.filled] #pbs-inline("pbs-last") $times 2$]
     )
   ]
+  // A fixed stage keeps the heading in the same position on every subslide.
+  block(width: 100%, height: 9cm)[
+    #place(center + horizon, dy: 18mm)[
+      #only("3")[
+        #stack(
+          spacing: 0.5em,
+          align(center, [$x dot.c y = frac((x+y)^2, 4) - frac((x-y)^2, 4)$]),
+          align(center, [#scale(80%, reflow: true, product-circuit)]),
+        )
+      ]
 
-  uncover("3-")[
-    #columns(2, gutter: 2em)[
+      #uncover("4-")[
+        #columns(2, gutter: 2em)[
       #grid(
         columns: (auto, auto, auto),
         align: (right + horizon, left + horizon, center + horizon),
@@ -35,7 +78,7 @@
 
       #colbreak()
 
-      #if self.subslide >= 4 [
+      #if self.subslide >= 5 [
         #grid(
             columns: (auto, auto, auto),
             align: (right + horizon, center + horizon, left + horizon),
@@ -46,6 +89,8 @@
             $dots.v$, [], [],
             $x_(n+1,s^n) = x_(n+1) dot.c x_(s^n)$, pbs-example("pbs-z-last"), $times 2$,
         )
+      ]
+        ]
       ]
     ]
   ]
@@ -64,6 +109,6 @@
 
   propertybox("Cost of evaluation of the decomposition", [$ lambda + 2t $])
 
-  propertybox("Bounds on the parameters (necessary to get a fulkl-rank matrix)", [$ s^n lt.eq t(n + lambda) $])
+  propertybox("Bounds on the parameters (necessary to get a fulkl-rank matrix)", [$ s^n lt.eq (t+1)(n + lambda) $])
 
 })

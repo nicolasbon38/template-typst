@@ -11,6 +11,7 @@
 #slide(repeat:2, title: "This was linear algebra all along", self => {
   let (uncover, only, alternatives) = utils.methods(self)
 
+  v(2em)
 
   propertybox("",
     [We start from the truth table of $f$]
@@ -215,6 +216,8 @@
   set math.mat(gap:10pt)
   set math.vec(gap:10pt)
 
+  v(2em)
+
   let sized-matrix = cetz.canvas({
     import cetz.draw: content, line
     content((0, 0), matrix-a, name: "matrix")
@@ -269,7 +272,7 @@
   let (uncover, only, alternatives) = utils.methods(self)
 
   alternatives[][
-    #propertybox("", [$plaintextmath(beta)$ just need to be pre-computed from $f$ \ #text(font: "Noto Color Emoji")[#emoji.arrow.r.filled] Only cleartext computations!])
+    #propertybox("", [$plaintextmath(beta)$ is pre-computed from $f$ with *Gaussian elimination*. \ #text(font: "Noto Color Emoji")[#emoji.arrow.r.filled] The inverted matrix can be re-used for *any* $f$ of same size])
   ][
     #alertbox([Problem: in practice $n << s^n$. So the rank of the matrix is not sufficient to find a solution.])
   ][

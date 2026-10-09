@@ -4,7 +4,8 @@
 
 #slide(title:"Conclusion", self => {
   [
-    - Improvement of TFHE homomorphic function evaluation for larger precision
-    - Relies only on simple building blocks
+    #set align(left)
+    Improvement of TFHE homomorphic function evaluation for larger precision \
+    Relies only on simple building blocks
   ]
 })
