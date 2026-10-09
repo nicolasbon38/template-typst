@@ -51,18 +51,21 @@
       [$ciphertextmath(dot.op)$ #text(font: "Noto Color Emoji")[#emoji.arrow.r.filled] #pbs-inline("pbs-last") $times 2$]
     )
   ]
-  // A fixed stage keeps the heading in the same position on every subslide.
-  block(width: 100%, height: 9cm)[
-    #place(center + horizon, dy: 18mm)[
-      #only("3")[
-        #stack(
-          spacing: 0.5em,
-          align(center, [$x dot.c y = frac((x+y)^2, 4) - frac((x-y)^2, 4)$]),
-          align(center, [#scale(80%, reflow: true, product-circuit)]),
-        )
-      ]
 
-      #uncover("4-")[
+
+  only("3")[
+    // A fixed stage keeps the heading in the same position on every subslide.
+    #block(width: 100%, height: 9cm)[
+        #set text(1.5em)
+          #stack(
+            spacing: 2em,
+            align(center, [$x dot.c y = frac((x+y)^2, 4) - frac((x-y)^2, 4)$]),
+            align(center, [#scale(100%, reflow: true, product-circuit)]),
+          )
+      ]
+    ]
+
+    only("4-")[
         #columns(2, gutter: 2em)[
       #grid(
         columns: (auto, auto, auto),
@@ -92,8 +95,7 @@
       ]
         ]
       ]
-    ]
-  ]
+
 })
 
 
