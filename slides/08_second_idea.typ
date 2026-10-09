@@ -2,55 +2,68 @@
 #import "../theme/inline-components.typ": pbs-inline, pbs-example
 #import "../theme/boxes.typ": propertybox
 #import "../theme/mannot/ciphertext.typ": ciphertextmath
+#import "@preview/touying:0.7.4": utils
 
 
+#slide(repeat: 4, self => {
+  let (uncover, only, alternatives) = utils.methods(self)
 
-#slide(self=>{
   [
-    *Second idea:* we use multiplication to use fewer randomness:
+    *Second idea:* we use multiplication to use fewer #pbs-inline("pbs-inline"):
   ]
 
-  grid(
-    columns: (auto, auto, auto),
-    align: (right + horizon, left + horizon, center + horizon),
-    column-gutter: (0.4em, 1em),
-    row-gutter: 0.5em,
-    $x_(n+1)$, $= phi_(n+1)(x_1, dots, x_n)$,pbs-example("pbs-first"),
-    [], $dots.v$, $dots.v$,
-    $x_(n+lambda)$, $= phi_(n+lambda)(x_1, dots, x_(n+lambda-1))$,
-    pbs-example("pbs-last"),
-  )
+  uncover("2")[
+    #propertybox(
+      "A ciphertext-ciphertext product takes two PBS:",
+      [$ciphertextmath(dot.op)$ #text(font: "Noto Color Emoji")[#emoji.arrow.r.filled] #pbs-inline("pbs-last") $times 2$]
+    )
+  ]
 
-  $ f(ciphertextmath(bold(x))) =
-    sum_(i=0)^(t-1)
-      (sum_(j=0)^(L-1) beta_(i,j) dot.op ciphertextmath(x_j))
-      ciphertextmath(dot.op)
-      (sum_(k=0)^(L-1) d_(i,k) dot.op ciphertextmath(x_k))
-    + sum_(j=0)^(L-1) beta_(t,j) dot.op ciphertextmath(x_j) $
+  uncover("3-")[
+    #columns(2, gutter: 2em)[
+      #grid(
+        columns: (auto, auto, auto),
+        align: (right + horizon, left + horizon, center + horizon),
+        column-gutter: (0.4em, 0.7em),
+        row-gutter: 0.5em,
+        $x_(n+1)$, $= phi_(n+1)(x_1, dots, x_n)$, pbs-example("pbs-first"),
+        $x_(n+2)$, $= phi_(n+2)(x_1, dots, x_(n+1))$, pbs-example("pbs-second"),
+        [], $dots.v$, [],
+        $x_(n+lambda)$, $= phi_(n+lambda)(x_1, dots, x_(n+lambda-1))$,
+        pbs-example("pbs-last"),
+      )
 
-  propertybox(
-    "A ciphertext-ciphertext product takes two PBS:",
-    [$ciphertextmath(dot.op)$ #text(font: "Noto Color Emoji")[#emoji.arrow.r.filled] #pbs-inline("pbs-last") $times 2$]
-  )
+      #colbreak()
+
+      #if self.subslide >= 4 [
+        #grid(
+            columns: (auto, auto, auto),
+            align: (right + horizon, center + horizon, left + horizon),
+            column-gutter: (0.5em, 0.25em),
+            row-gutter: 0.5em,
+            $x_(1,7) = x_1 dot.c x_7$, pbs-example("pbs-z-first"), $times 2$,
+            $x_(3,n+2) = x_3 dot.c x_(n+2)$, pbs-example("pbs-z-second"), $times 2$,
+            $dots.v$, [], [],
+            $x_(n+1,s^n) = x_(n+1) dot.c x_(s^n)$, pbs-example("pbs-z-last"), $times 2$,
+        )
+      ]
+    ]
+  ]
 })
 
 
 
-#slide(self=>{
+#slide(title:"Full formula:", self=>{
 
   [$ f(ciphertextmath(bold(x))) =
-    sum_(i=0)^(t-1)
-      (sum_(j=0)^(L-1) beta_(i,j) dot.op ciphertextmath(x_j))
+    sum_(i=1)^(t)
+      (sum_(j=1)^(n+lambda) beta_(i,j) dot.op ciphertextmath(x_j))
       ciphertextmath(dot.op)
-      (sum_(k=0)^(L-1) d_(i,k) dot.op ciphertextmath(x_k))
-    + sum_(j=0)^(L-1) beta_(t,j) dot.op ciphertextmath(x_j) $]
+      (sum_(k=1)^(n+lambda) d_(i,k) dot.op ciphertextmath(x_k))
+    + sum_(k=1)^(n+lambda) beta_(t,j) dot.op ciphertextmath(x_j) $]
 
+  propertybox("Cost of evaluation of the decomposition", [$ lambda + 2t $])
 
-  propertybox("Bounds on the parameters", [TODO])
-
-
-  propertybox("Cost of evaluation of the decomposition", [TODO])
-
-
+  propertybox("Bounds on the parameters (necessary to get a fulkl-rank matrix)", [$ s^n lt.eq t(n + lambda) $])
 
 })

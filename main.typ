@@ -18,7 +18,7 @@
 #title-slide()
 
 
-= Intro TFHE
+= Basics on TFHE scheme
 
 #include "slides/01_tfhe_basics.typ"
 #include "slides/02_perfs_pbs.typ"

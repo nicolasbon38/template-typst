@@ -8,7 +8,7 @@
 
 
 
-#slide(repeat:3, title: "This was linear algebra all along", self => {
+#slide(repeat:2, title: "This was linear algebra all along", self => {
   let (uncover, only, alternatives) = utils.methods(self)
 
 
@@ -30,61 +30,24 @@
       dir:ltr,
       spacing: 20%,
 
-      if self.subslide < 3 [
-          #grid(
-            columns:5,
-            fill: (x, y) => if y==0{gray.lighten(40%)},
+        grid(
+          columns:5,
+          fill: (x, y) => if y==0{gray.lighten(40%)},
 
-            grid.header(
-              [$x_1$], [$x_2$], [$x_3$], [$x_4$], [$dots$]
-            ),
-            ..(0, 0, 0, 0, $dots$,
-            1, 0, 0, 0, $dots$,
-            0, 1, 0, 0, $dots$,
-            $dots.v$, $dots.v$, $dots.v$, $dots.v$, $dots.down$).map(x => [#x])
-          )
-        ] else [
-          #grid(
-            columns:5,
-            ..range(1, 5, inclusive: true).map(x => {
-              range(1, 5, inclusive: true).map(y => {
-                if x==5 and y==5{
-                  [$dots.down$]
-                }
-                else if y == 5{
-                  [$dots$]
-                }
-                else if x == 5{
-                  [$dots.v$]
-                }
-                else{
-                  [$x_(#y)^((#x))$]
-                }
-              })
-            }).flatten()
-          )
-        ],
-
-        if self.subslide < 3 [
-          #grid(
-            columns:1,
-            fill: (x, y) => if y==0{gray.lighten(40%)},
-            grid.header([$y$]),
-            ..(1, 1, 0, $dots.v$).map(x => [#x])
-          )
-        ] else [
-          #grid(
-            columns:1,
-            ..range(1, 5, inclusive: true).map(x => {
-                if x == 5{
-                  [$dots.v$]
-                }
-                else{
-                  [$y^((#x))$]
-                }
-            }).flatten()
-          )
-        ]
+          grid.header(
+            [$x_1$], [$x_2$], [$x_3$], [$x_4$], [$dots$]
+          ),
+          ..(0, 0, 0, 0, $dots$,
+          1, 0, 0, 0, $dots$,
+          0, 1, 0, 0, $dots$,
+          $dots.v$, $dots.v$, $dots.v$, $dots.v$, $dots.down$).map(x => [#x])
+        ),
+        grid(
+          columns:1,
+          fill: (x, y) => if y==0{gray.lighten(40%)},
+          grid.header([$y$]),
+          ..(1, 1, 0, $dots.v$).map(x => [#x])
+        )
       )
   ]
 })
@@ -123,6 +86,24 @@
   ),
 )$
 
+#let matrix-with-extension(
+  xmax,
+  ymax,
+  func: x-ij,
+  ymax-extension,
+) = $mat(
+  ..#range(1, xmax, inclusive:true).map(x => {
+    let extension = if x == xmax - 1 {
+      ($dots.v$, $dots.down$, $dots.v$)
+    } else {
+      let row = if x == xmax { $s^n$ } else { x }
+      (x-ij(row, $n+1$), $dots$, x-ij(row, ymax-extension))
+    }
+    range(1, ymax, inclusive:true).map(y => func(x, y)) + extension
+  }),
+  augment: ymax,
+)$
+
 #let matrix-dots-version(
   xmax,
   ymax,
@@ -131,6 +112,26 @@
 ) = matrix(
   xmax,
   ymax,
+  func: (x, y) => dots-version(
+    x,
+    y,
+    xmax,
+    ymax,
+    symb-max-x,
+    symb-max-y,
+  ),
+)
+
+
+#let matrix-dots-version-with-extension(
+  xmax,
+  ymax,
+  symb-max-x: none,
+  symb-max-y: none,
+) = matrix-with-extension(
+  xmax,
+  ymax,
+  symb-max-y,
   func: (x, y) => dots-version(
     x,
     y,
@@ -189,6 +190,16 @@
   symb-max-x: sn,
   symb-max-y: $n$,
 )
+
+
+#let matrix-a-extended = matrix-dots-version-with-extension(
+  n-rows,
+  n-cols,
+  symb-max-x: sn,
+  symb-max-y: sn,
+)
+
+
 #let vec-beta = vec-symb-with-dots(n-cols, $beta$, $n$)
 #let vec-y = vec-symb-ciphertext-with-dots(n-rows, $y$, sn)
 
@@ -197,37 +208,63 @@
 
 
 
-#slide(repeat:3, self => {
+#slide(repeat:4, title: "This was linear algebra all along",  self => {
 
   set text(size:1em)
 
-  set math.mat(gap:20pt)
-  set math.vec(gap:20pt)
+  set math.mat(gap:10pt)
+  set math.vec(gap:10pt)
 
   let sized-matrix = cetz.canvas({
     import cetz.draw: content, line
-
     content((0, 0), matrix-a, name: "matrix")
 
     line(
-      (rel: (0, 0.6), to: "matrix.north-west"),
-      (rel: (0, 0.6), to: "matrix.north-east"),
-      mark: (start: "<", end: ">"),
+      (rel: (0, -0.6), to: "matrix.south-west"),
+      (rel: (0, -0.6), to: "matrix.south-east"),
+      mark: (start: ">", end: ">"),
       stroke: 0.7pt,
     )
-    content((rel: (0, 1), to: "matrix.north"), text(size: 0.9em, $n$))
+    content((rel: (0, -0.2), to: "matrix.south"), text(size: 0.9em, fill:black, $n$))
 
     line(
       (rel: (-0.3, 0), to: "matrix.south-west"),
       (rel: (-0.3, 0), to: "matrix.north-west"),
-      mark: (start: "<", end: ">"),
+      mark: (start: ">", end: ">"),
       stroke: 0.7pt,
     )
-    content((rel: (-0.7, 0), to: "matrix.west"), text(size: 0.9em, $s^n$), angle: 90deg)
+    content((rel: (-0.7, 0), to: "matrix.west"), text(size: 0.9em, fill:black, $s^n$), angle: 90deg)
   })
 
   let beta-vector = if self.subslide >= 2 { plaintextmath(vec-beta) } else { vec-beta }
-  $ #sized-matrix dot.op #beta-vector = #vec-y $
+
+  let sized-matrix-with-extension = cetz.canvas({
+    import cetz.draw: content, line
+    content((0, 0), matrix-a-extended, name: "matrix")
+
+    line(
+      (rel: (0, -0.6), to: "matrix.south-west"),
+      (rel: (0, -0.6), to: "matrix.south-east"),
+      mark: (start: ">", end: ">"),
+      stroke: 0.7pt,
+    )
+    content((rel: (0, -0.2), to: "matrix.south"), text(size: 0.9em, fill:black, $s^n$))
+
+    line(
+      (rel: (-0.3, 0), to: "matrix.south-west"),
+      (rel: (-0.3, 0), to: "matrix.north-west"),
+      mark: (start: ">", end: ">"),
+      stroke: 0.7pt,
+    )
+    content((rel: (-0.7, 0), to: "matrix.west"), text(size: 0.9em, fill:black, $s^n$), angle: 90deg)
+  })
+
+  let displayed-matrix = if self.subslide == 4 {
+    sized-matrix-with-extension
+  } else {
+    sized-matrix
+  }
+  $ #displayed-matrix dot.op #beta-vector = #vec-y $
 
   let (uncover, only, alternatives) = utils.methods(self)
 
@@ -235,5 +272,7 @@
     #propertybox("", [$plaintextmath(beta)$ just need to be pre-computed from $f$ \ #text(font: "Noto Color Emoji")[#emoji.arrow.r.filled] Only cleartext computations!])
   ][
     #alertbox([Problem: in practice $n << s^n$. So the rank of the matrix is not sufficient to find a solution.])
+  ][
+    #propertybox("The solution", [#text(font: "Noto Color Emoji")[#emoji.arrow.r.filled] We extend the matrix with synthetic variables!])
   ]
 })
