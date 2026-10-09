@@ -1,5 +1,5 @@
-#import "@preview/touying:0.7.4": *
-#import "../colors.typ": *
+#import "@preview/touying:0.7.4": slide, touying-slide-wrapper, touying-slide, touying-slides, components, utils, config-page, config-common, config-colors, config-store
+#import "../colors.typ": primary, primary-light, primary-dark, primary-darkest, secondary, tertiary
 
 #let slide-margin = 7mm
 
@@ -40,8 +40,10 @@
   let info = self.info + args.named()
   self = utils.merge-dicts(
     self,
+    config-common(freeze-slide-counter: true),
     config-page(
       numbering: none,
+      footer: none,
       fill: self.colors.primary-darkest,
     ),
   )
@@ -85,8 +87,10 @@
 #let new-section-slide(body) = touying-slide-wrapper(self => {
   self = utils.merge-dicts(
     self,
+    config-common(freeze-slide-counter: true),
     config-page(
       numbering: none,
+      footer: none,
       fill: self.colors.primary-dark,
     ),
   )
@@ -94,33 +98,38 @@
   touying-slide(self: self, {
     set text(font: "JetBrains Mono")
 
-    let number = utils.display-current-heading-number(level: 1, numbering:"1")
-    let title = utils.display-current-heading(
-      level: 1,
-      numbered: false,
-    )
-
-    align(left + horizon)[
-      #text(
-        size: 34pt,
-        weight: "bold",
-        fill: self.colors.primary,
-        [Part #number:],
+    context {
+      let current-heading = utils.current-heading(level: 1)
+      let number = utils.display-current-heading-number(level: 1)
+      let title = utils.display-current-heading(
+        level: 1,
+        numbered: false,
       )
 
-      #v(8mm)
+      align(left + horizon)[
+        #if current-heading.numbering != none [
+          #text(
+            size: 34pt,
+            weight: "bold",
+            fill: self.colors.primary,
+            [Part #number:],
+          )
 
-      #text(size: 19pt, fill: primary-light, title)
+          #v(8mm)
+        ]
 
-      #v(5mm)
+        #text(size: 19pt, fill: primary-light, title)
 
-      #align(center)[
-        #line(
-          length: 70%,
-          stroke: self.colors.primary + 5pt,
-        )
+        #v(5mm)
+
+        #align(center)[
+          #line(
+            length: 70%,
+            stroke: self.colors.primary + 5pt,
+          )
+        ]
       ]
-    ]
+    }
 
     body
   })
@@ -132,8 +141,10 @@
 #let new-subsection-slide(body) = touying-slide-wrapper(self => {
   self = utils.merge-dicts(
     self,
+    config-common(freeze-slide-counter: true),
     config-page(
       numbering: none,
+      footer: none,
       fill: self.colors.primary-darkest.transparentize(10%),
     ),
   )
@@ -184,6 +195,11 @@
       paper: "presentation-16-9",
       margin: slide-margin,
       fill: primary-light,
+      footer: align(right)[
+        #text(size: 11pt, fill: primary-dark)[
+          #context utils.slide-counter.display() / #context utils.last-slide-number #h(10pt))
+        ]
+      ],
       foreground: {
         rect(
           width: 100%,
