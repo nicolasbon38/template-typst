@@ -6,11 +6,11 @@
 #slide(repeat:2, self => {
   let (uncover, only, alternatives) = utils.methods(self)
 
-  [ This question has already been studied by the SCA community to compile *masked implementations*.]
+  [ This question is already studied in the CHES community, but targeting different metrics.]
 
   v(2em)
 
-  alternatives[Previous works focused on minimizing the number of *AND* gates][#strike([Previous works focused on minimizing the number of *AND* gates])]
+  alternatives[An usual goal is to minimize the number of *AND* gates.][#strike([An usual goal is to minimize the number of *AND* gates.])]
 
   v(1em)
 

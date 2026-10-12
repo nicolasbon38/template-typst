@@ -111,6 +111,6 @@
 
   propertybox("Cost of evaluation of the decomposition", [$ lambda + 2t $])
 
-  propertybox("Bounds on the parameters (necessary to get a fulkl-rank matrix)", [$ s^n lt.eq (t+1)(n + lambda) $])
+  propertybox("Bounds on the parameters (necessary to get a full-rank matrix)", [$ s^n lt.eq (t+1)(n + lambda) $])
 
 })

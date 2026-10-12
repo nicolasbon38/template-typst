@@ -162,9 +162,6 @@
 
   questionbox([Given a function $f$, how to compile this circuit to make it the most efficient possible?])
 
-
-  questionbox([How to dimension the chunks?])
-
 })
 
 

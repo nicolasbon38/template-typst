@@ -10,7 +10,7 @@
   let reveal(step, body) = if self.subslide >= step { body } else { hide(body) }
 
 
-  questionbox([How to generate the synthetic variable?)])
+  questionbox([How to generate the synthetic variables?])
 
   reveal(2)[
     *First idea:* we sample random functions $phi_(n+1), dots, phi_(s^n)$.
