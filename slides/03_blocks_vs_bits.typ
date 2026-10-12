@@ -160,7 +160,7 @@
 
 #slide(self =>{
 
-  questionbox([Given a function $f$, how to compile this circuit to make it the most efficient possible?])
+  questionbox([Given a function $f$, how to compile the most efficient circuit possible in the homomorphic domain?])
 
 })
 

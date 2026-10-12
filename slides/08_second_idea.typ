@@ -67,6 +67,7 @@
 
     only("4-")[
         #columns(2, gutter: 2em)[
+      *Construction of basis:*
       #grid(
         columns: (auto, auto, auto),
         align: (right + horizon, left + horizon, center + horizon),
@@ -78,20 +79,18 @@
         $x_(n+lambda)$, $= phi_(n+lambda)(x_1, dots, x_(n+lambda-1))$,
         pbs-example("pbs-last"),
       )
+      *Smaller by a factor #text(weight: "bold")[√]*
 
       #colbreak()
 
       #if self.subslide >= 5 [
-        #grid(
-            columns: (auto, auto, auto),
-            align: (right + horizon, center + horizon, left + horizon),
-            column-gutter: (0.5em, 0.25em),
-            row-gutter: 0.5em,
-            $x_(1,7) = x_1 dot.c x_7$, pbs-example("pbs-z-first"), $times 2$,
-            $x_(3,n+2) = x_3 dot.c x_(n+2)$, pbs-example("pbs-z-second"), $times 2$,
-            $dots.v$, [], [],
-            $x_(n+1,s^n) = x_(n+1) dot.c x_(s^n)$, pbs-example("pbs-z-last"), $times 2$,
-        )
+        *Products:*\
+        #v(1em)
+        $ (sum_(j=1)^(n+lambda) beta_(i,j) dot.op ciphertextmath(x_j))
+            ciphertextmath(dot.op)
+            (sum_(k=1)^(n+lambda) d_(i,k) dot.op ciphertextmath(x_k)) $
+
+        produces $n+lambda$ degrees of freedom in 2 #pbs-inline("").
       ]
         ]
       ]

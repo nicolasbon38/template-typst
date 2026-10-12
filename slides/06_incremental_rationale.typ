@@ -1,4 +1,5 @@
 #import "../theme/touying/theme-crx.typ": slide
+#import "../theme/colors.typ": alert
 #import "../theme/mannot/ciphertext.typ": ciphertextmath, plaintextmath
 #import "../theme/boxes.typ": alertbox, propertybox
 #import "@preview/touying:0.7.4": utils
@@ -98,7 +99,11 @@
       ($dots.v$, $dots.down$, $dots.v$)
     } else {
       let row = if x == xmax { $s^n$ } else { x }
-      (x-ij(row, $n+1$), $dots$, x-ij(row, ymax-extension))
+      (
+        text(fill: alert, x-ij(row, $n+1$)),
+        $dots$,
+        text(fill: alert, x-ij(row, ymax-extension)),
+      )
     }
     range(1, ymax, inclusive:true).map(y => func(x, y)) + extension
   }),

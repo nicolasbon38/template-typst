@@ -3,7 +3,7 @@
 #import "../theme/inline-components.typ": pbs-inline, pbs-example
 #import "../theme/boxes.typ": questionbox, alertbox
 #import "../theme/mannot/ciphertext.typ": plaintextmath
-
+#import "../theme/colors.typ": alert
 
 
 #slide(repeat: 5, self=>{
@@ -22,12 +22,12 @@
     align: (right + horizon, left + horizon, center + horizon),
     column-gutter: (0.4em, 1em),
     row-gutter: 0.5em,
-    reveal(2, $x_(n+1)$), reveal(2, $= phi_(n+1)(x_1, dots, x_n)$),
+    reveal(2, text(fill:alert)[$x_(n+1)$]), reveal(2, $= phi_(n+1)(x_1, dots, x_n)$),
     reveal(2, pbs-example("pbs-first")),
-    reveal(3, $x_(n+2)$), reveal(3, $= phi_(n+2)(x_1, dots, x_(n+1))$),
+    reveal(3,text(fill:alert)[$x_(n+2)$]), reveal(3, $= phi_(n+2)(x_1, dots, x_(n+1))$),
     reveal(3, pbs-example("pbs-second")),
     [], reveal(4, $dots.v$), reveal(4, $dots.v$),
-    reveal(4, $x_(s^n)$), reveal(4, $= phi_(s^n)(x_1, dots, x_(s^n-1))$),
+    reveal(4, text(fill:alert)[$x_(s^n)$]), reveal(4, $= phi_(s^n)(x_1, dots, x_(s^n-1))$),
     reveal(4, pbs-example("pbs-last")),
   )
 
