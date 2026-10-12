@@ -4,6 +4,7 @@
 
 
 #slide(repeat:2, self => {
+  set align(left)
   let (uncover, only, alternatives) = utils.methods(self)
 
   [ This question is already studied in the CHES community, but targeting different metrics.]
