@@ -109,7 +109,7 @@
       (sum_(k=1)^(n+lambda) d_(i,k) dot.op ciphertextmath(x_k))
     + sum_(k=1)^(n+lambda) beta_(t,j) dot.op ciphertextmath(x_j) $]
 
-  propertybox("Cost of evaluation of the decomposition", [$ lambda + 2t $])
+  propertybox("Cost of evaluation of the decomposition", [$ lambda + 2t #pbs-inline("") $])
 
   propertybox("Bounds on the parameters (necessary to get a full-rank matrix)", [$ s^n lt.eq (t+1)(n + lambda) $])
 

@@ -23,7 +23,7 @@
 #include "slides/01_tfhe_basics.typ"
 #include "slides/02_perfs_pbs.typ"
 
-= Circuit != Blocks
+= Circuit compilation
 
 #include "slides/03_blocks_vs_bits.typ"
 #include "slides/04_side_channels.typ"
